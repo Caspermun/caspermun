@@ -14,7 +14,10 @@ def index(request):
 
 
 def smart_link(request, url):
-    album = Album.objects.get(url=url)
+    try:
+        album = Album.objects.get(url=url)
+    except Album.DoesNotExist:
+        album = None
     index = IndexPage.objects.first()
 
     context = {
