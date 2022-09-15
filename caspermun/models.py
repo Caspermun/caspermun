@@ -61,7 +61,7 @@ class Album(models.Model):
 
     def cover_tag(self):
         from django.utils.html import escape
-        return format_html('<img src="/media/%s" height="100" />' % format(self.cover))
+        return format_html('<img src="/media/%s" height="100" />' % format(self.cover.url))
 
     cover_tag.short_description = 'Cover'
     cover_tag.allow_tags = True
