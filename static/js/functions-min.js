@@ -750,7 +750,7 @@
     }
 
     function i(t, e, i) {
-        $(".main-content").children().removeClass("section--is-active"), $(".main-content").children().eq(e).addClass("section--is-active"), $(".main-content .section").children().removeClass("section--next section--prev"), t === i && 0 === e || 0 === t && e === i ? $(".main-content .section").children().removeClass("section--next section--prev") : e > t ? $(".main-content").children().eq(t).children().addClass("section--next") : $(".main-content").children().eq(t).children().addClass("section--prev"), 0 !== e && e !== i ? $(".header--cta").addClass("is-active") : $(".header--cta").removeClass("is-active")
+        $(".main-content").children().removeClass("section--is-active"), $(".main-content").children().eq(e).addClass("section--is-active"), $(".main-content .section").children().removeClass("section--next section--prev"), t === i && 0 === e || 0 === t && e === i ? $(".main-content .section").children().removeClass("section--next section--prev") : e > t ? $(".main-content").children().eq(t).children().addClass("section--next") : $(".main-content").children().eq(t).children().addClass("section--prev"), 0 !== e && 1 !== e ? $(".header--cta").addClass("is-active") : $(".header--cta").removeClass("is-active")
     }
 
     function n() {

@@ -144,8 +144,7 @@ $( document ).ready(function() {
 
     if (nextPos !== 0 && nextPos !== lastItem) {
       $('.header--cta').addClass('is-active');
-    }
-    else {
+    } else {
       $('.header--cta').removeClass('is-active');
     }
 

@@ -5763,7 +5763,7 @@
                         <div class="blur-fixed">
                             <div>
                                 <div class="blur"
-                                     style="background-image:url({{ albums.cover.url }});background-color:rgba(216, 216, 216, 1);"></div>
+                                     style="background-image:url({{ album.cover.url }});background-color:rgba(216, 216, 216, 1);"></div>
                                 <div class="blur-mask"></div>
                             </div>
                         </div>
@@ -5772,37 +5772,39 @@
                                 <div class="container-event" data-v-7c0e0e46><!---->
                                     <div id="release-block" style="display:;" data-v-7c0e0e46>
                                         <section class="image top-rounded" data-v-7c0e0e46><img
-                                                src="{{ albums.cover.url }}"
+                                                src="{{ album.cover.url }}"
                                                 alt="" class="image__img" data-v-7c0e0e46> <!----> <!----></section>
                                         <section class="event-info" data-v-7c0e0e46><h1
                                                 class="event-info__artist no-default-styles" data-v-7c0e0e46>
-                                            {{ albums.artist.nickname }}
+                                            {{ album.artist.nickname }}
                                             <!----></h1>
-                                            <h2 title="{{ albums.title }}" class="event-info__event no-default-styles"
+                                            <h2 title="{{ album.title }}" class="event-info__event no-default-styles"
                                                 data-v-7c0e0e46>
-                                                {{ albums.title }}
+                                                {{ album.title }}
                                             </h2> <!---->
-                                            <div data-v-71813c1a data-v-7c0e0e46>
-                                                <div class="sharing icon-sharing" data-v-71813c1a></div>
-                                                <div class="relative" data-v-71813c1a>
-                                                    <div class="sharing-box bottom-shadow" data-v-71813c1a><a
-                                                            target="_blank"
-                                                            href="https://vk.com/share.php?url=https://band.link/fantasygirl"
-                                                            class="icon-vk-sharing" data-v-71813c1a></a> <a
-                                                            target="_blank"
-                                                            href="whatsapp://send?text=https://band.link/fantasygirl"
-                                                            class="icon-whatsapp-sharing" data-v-71813c1a></a> <a
-                                                            target="_blank"
-                                                            href="viber://forward?text=https://band.link/fantasygirl"
-                                                            class="icon-viber-sharing" data-v-71813c1a></a> <a
-                                                            target="_blank"
-                                                            href="https://telegram.me/share/url?url=https://band.link/fantasygirl"
-                                                            class="icon-telegram-sharing" data-v-71813c1a></a>
-                                                        <div class="copy-to-clipboard" data-v-71813c1a></div>
-                                                        <div class="close-sharing" data-v-71813c1a></div>
-                                                    </div>
-                                                </div>
-                                            </div>
+{#                                            <div data-v-71813c1a data-v-7c0e0e46>#}
+{#                                                <div class="sharing icon-sharing"#}
+{#                                                     data-v-71813c1a>#}
+{#                                                </div>#}
+{#                                                <div class="relative" data-v-71813c1a>#}
+{#                                                    <div class="sharing-box bottom-shadow" data-v-71813c1a>#}
+                                                        {#                                                        <a target="_blank"#}
+                                                        {#                                                            href="https://vk.com/share.php?url=https://band.link/fantasygirl"#}
+                                                        {#                                                            class="icon-vk-sharing" data-v-71813c1a></a> <a#}
+                                                        {#                                                            target="_blank"#}
+                                                        {#                                                            href="whatsapp://send?text=https://band.link/fantasygirl"#}
+                                                        {#                                                            class="icon-whatsapp-sharing" data-v-71813c1a></a> <a#}
+                                                        {#                                                            target="_blank"#}
+                                                        {#                                                            href="viber://forward?text=https://band.link/fantasygirl"#}
+                                                        {#                                                            class="icon-viber-sharing" data-v-71813c1a></a> <a#}
+                                                        {#                                                            target="_blank"#}
+                                                        {#                                                            href="https://telegram.me/share/url?url=https://band.link/fantasygirl"#}
+                                                        {#                                                            class="icon-telegram-sharing" data-v-71813c1a></a>#}
+{#                                                        <div class="copy-to-clipboard" data-v-71813c1a></div>#}
+                                                        {#                                                        <div class="close-sharing" data-v-71813c1a></div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
                                         </section> <!---->
                                         <div class="content" style="display:;" data-v-7c0e0e46><!----> <!----> <!---->
                                             <!---->
@@ -5810,14 +5812,15 @@
                                                  data-v-533b46a2 data-v-7c0e0e46>
                                                 <div data-v-533b46a2><!----> <!----> <!----> <!----></div>
                                             </div>
-                                            {% if albums.link_set %}
-                                                {% for link in albums.link_set.all %}
+                                            {% if album.link_set %}
+                                                {% for link in album.link_set.all %}
                                                     <div class="order-block links-wrapper order-1" data-v-7c0e0e46>
                                                         <div rel="nofollow" class="order-block" data-v-7c0e0e46>
                                                             <div data-v-51b21670 data-v-7c0e0e46>
                                                                 <a
                                                                         href="{{ link.url }}"
-                                                                        target="_blank" class="link" style="background-image: url({{ link.logo.url }})"
+                                                                        target="_blank" class="link"
+                                                                        style="background-image: url({{ link.logo.url }})"
                                                                         data-v-51b21670>
                                                                     <span class="service-text"
                                                                           data-v-51b21670>
@@ -5913,452 +5916,6 @@
         </div>
     </div>
 </div>
-<script>window.__NUXT__ = (function (a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, A, B, C, D, E, F, G, H, I, J) {
-    return {
-        layout: "default",
-        data: [{
-            bandLink: {
-                id: f,
-                type: "release",
-                user_id: e,
-                store_id: a,
-                base_artist_id: 548062,
-                creator_id: e,
-                folder_id: a,
-                alias: "fantasygirl",
-                alias_comment: a,
-                hex: "xVzWZ",
-                tag: d,
-                itunes_primary_genre: l,
-                artist_name: g,
-                artist_official: a,
-                artist_facebook: a,
-                artist_twitter: a,
-                artist_youtube: "http:\u002F\u002Fyoutube.com\u002Fcaspermun",
-                artist_instagram: "http:\u002F\u002Finstagram.com\u002Fcaspermun",
-                artist_telegram: u,
-                artist_viber: a,
-                artist_whatsapp: a,
-                artist_bq: a,
-                artist_vk: d,
-                artist_itunes: a,
-                artist_tiktok: "https:\u002F\u002Fvt.tiktok.com\u002FZSdTRq9Ah\u002F",
-                artist_yandex_music: a,
-                artist_ok: a,
-                release_name: m,
-                release_image: n,
-                background_image: a,
-                default_background: a,
-                theme: "air__theme",
-                itunes: a,
-                soundcloud_preview: a,
-                soundcloud_instead_cover: b,
-                promodj_widget: a,
-                spotify_widget: a,
-                yandex_music_widget: a,
-                itunes_position: b,
-                facebook_channel_disabled: b,
-                vk_channel_disabled: c,
-                twitter_channel_disabled: b,
-                youtube_channel_disabled: c,
-                links_: a,
-                videos: ["https:\u002F\u002Fyoutu.be\u002FFGpNupU-rac"],
-                videos_header: a,
-                profile_links: [],
-                profile_links_header: a,
-                event_name: a,
-                event_image: a,
-                profile_itunes_player: a,
-                profile_description: a,
-                profile_description_short: a,
-                profile_description_ru: a,
-                profile_description_ru_short: a,
-                profile_description_header: a,
-                profile_description_header_ru: a,
-                profile_events_from_bl: b,
-                profile_releases_from_bl: b,
-                profile_releases_header: a,
-                profile_show_description_header: c,
-                profile_collapse_description: c,
-                profile_collapse_contacts: c,
-                profile_collapse_links: c,
-                profile_contacts: a,
-                profile_contacts_header: a,
-                profile_section_order: [],
-                profile_official_links_order: [],
-                profile_desktop_image: a,
-                concert_date: a,
-                concert_time: d,
-                concert_facebook: d,
-                concert_vk: d,
-                concerts_header: a,
-                feed_enabled: b,
-                feed_header: a,
-                facebook_id: a,
-                social_links_enabled: c,
-                player_enabled: b,
-                video_enabled: c,
-                events_enabled: c,
-                gradient_enabled: b,
-                featured: b,
-                no_itunes: b,
-                show_in_slider: b,
-                show_subscribers_count: c,
-                sort_services_by_clicks: b,
-                desktop_version_enabled: b,
-                instagram_id: a,
-                instagram_header: a,
-                fb_pixel: d,
-                vk_pixel: d,
-                tiktok_pixel: a,
-                g_analytics: d,
-                g_adwords: d,
-                g_tag_manager: d,
-                ya_metrika: d,
-                redirect_url: a,
-                root_domain_access: b,
-                custom_domain: d,
-                custom_subdomain: d,
-                selected_domain: "bnd.lc",
-                open_graph: a,
-                verified: b,
-                qr_collapsed: b,
-                qr_enabled: b,
-                qr_header: a,
-                merch_enabled: b,
-                merch_store_id: a,
-                seo_title: a,
-                seo_vk_code: a,
-                seo_description: a,
-                seo_image: a,
-                seo_indexed: c,
-                stream_title: a,
-                stream_text: a,
-                stream_links: [],
-                donate_title: a,
-                donate_text: a,
-                donate_links: [],
-                subscriptions_enabled: b,
-                telegram_subscriptions_enabled: b,
-                telegram_subscriptions_link: a,
-                vk_subscriptions_enabled: c,
-                hide_from_chart: b,
-                subscriptions_header: a,
-                photos_header_en: a,
-                photos_header_ru: a,
-                text_header: a,
-                text: a,
-                publish_date: "0000-00-00 00:00:00",
-                upc: a,
-                upc_updated: a,
-                generated_by_api: a,
-                is_alive: c,
-                deleted_at: a,
-                created_at: "2021-07-21 00:06:05",
-                updated_at: "2022-06-24 10:36:22",
-                bandlink_artists_header: a,
-                prev_bandlink: a,
-                next_bandlink: a,
-                services_order_cached: d,
-                qrcode: "POKJ3WcOrU1xuMlC0BKG.png",
-                bandlink_profile: a,
-                parsed_social_content: {followers: b, image: d, description: d},
-                released_on_bandlink: b,
-                alias_settings_payment: a,
-                shared_lock: b,
-                user: {
-                    id: e,
-                    user_id: a,
-                    name: g,
-                    email: "caspermunele@gmail.com",
-                    new_email: a,
-                    new_email_token: a,
-                    new_email_send: a,
-                    provider: a,
-                    role: a,
-                    is_partner: b,
-                    ca: "artist",
-                    plan: v,
-                    plan_time: "2023-01-01 00:01:01",
-                    partner_code: "upsound",
-                    partner_code_activated: a,
-                    referral_hex: a,
-                    general_limit: b,
-                    profile_limit: b,
-                    label_limit: b,
-                    agency_limit: b,
-                    podcaster_limit: b,
-                    can_create_link: b,
-                    apple_music_code: a,
-                    default_fb_pixel: a,
-                    default_vk_pixel: a,
-                    default_tiktok_pixel: a,
-                    default_g_adwords: a,
-                    default_g_analytics: a,
-                    default_g_tag_manager: a,
-                    default_ya_metrika: a,
-                    default_qr_enabled: a,
-                    default_video_enabled: a,
-                    disabled_powered_by: b,
-                    autopay: b,
-                    approved_seller: b,
-                    store_page_visited: b,
-                    trusted: b,
-                    allow_distro: c,
-                    confirmed: c,
-                    token_sent: a,
-                    language: o,
-                    signup_language: o,
-                    is_alive: c,
-                    ads_agree: c,
-                    terms_agree: c,
-                    unsubscribed: b,
-                    detached_card_at: a,
-                    banner_closed: b,
-                    banner1_closed: b,
-                    banner2_closed: b,
-                    banner3_closed: b,
-                    deleted_at: a,
-                    created_at: "2019-11-13T18:41:41.000000Z",
-                    updated_at: "2022-06-24T10:18:24.000000Z",
-                    computed_plan: v,
-                    subdomains: [],
-                    custom_domains: [],
-                    partner_codes: [],
-                    custom_services: [{
-                        id: 1855,
-                        user_id: e,
-                        domain: w,
-                        full_link: w,
-                        service_name: "Telegram",
-                        redirect: a,
-                        button_text: "open",
-                        button_custom_text: a,
-                        image: "custom_icon1",
-                        show_icon: c,
-                        show_button: c,
-                        background: a,
-                        created_at: x,
-                        updated_at: x
-                    }, {
-                        id: 17008,
-                        user_id: e,
-                        domain: a,
-                        full_link: "https:\u002F\u002Fsoundcloud.app.goo.gl\u002FjuoTpAihdeoA7bEC7",
-                        service_name: h,
-                        redirect: d,
-                        button_text: i,
-                        button_custom_text: d,
-                        image: "custom_icon6",
-                        show_icon: c,
-                        show_button: c,
-                        background: j,
-                        created_at: y,
-                        updated_at: y
-                    }, {
-                        id: 17637,
-                        user_id: e,
-                        domain: a,
-                        full_link: "https:\u002F\u002Fsoundcloud.app.goo.gl\u002FE5uo1NW6bVwaexYV6",
-                        service_name: h,
-                        redirect: d,
-                        button_text: i,
-                        button_custom_text: d,
-                        image: p,
-                        show_icon: c,
-                        show_button: c,
-                        background: j,
-                        created_at: "2021-07-08T09:18:20.000000Z",
-                        updated_at: "2021-07-08T09:18:45.000000Z"
-                    }, {
-                        id: 18303,
-                        user_id: e,
-                        domain: a,
-                        full_link: "https:\u002F\u002Fsoundcloud.app.goo.gl\u002FnBC73Xxxp7AsDc5dA",
-                        service_name: h,
-                        redirect: d,
-                        button_text: i,
-                        button_custom_text: d,
-                        image: p,
-                        show_icon: c,
-                        show_button: c,
-                        background: j,
-                        created_at: z,
-                        updated_at: z
-                    }, {
-                        id: 18641,
-                        user_id: e,
-                        domain: a,
-                        full_link: "https:\u002F\u002Fsoundcloud.app.goo.gl\u002FDNGLqEGEQt1KHvNk7",
-                        service_name: h,
-                        redirect: d,
-                        button_text: i,
-                        button_custom_text: d,
-                        image: p,
-                        show_icon: c,
-                        show_button: c,
-                        background: j,
-                        created_at: A,
-                        updated_at: A
-                    }]
-                },
-                bandlink_artists: [],
-                bandlink_events: [],
-                bandlink_campaigns: [],
-                tags: [],
-                store: a,
-                links: [{
-                    id: 3721973,
-                    bandlink_id: f,
-                    url: "https:\u002F\u002Fgeo.music.apple.com\u002Falbum\u002F%D1%84%D0%B0%D0%BD%D1%82%D0%B0%D0%B7%D0%B8%D1%8F-single\u002F1630788249?uo=4&app=itunes",
-                    temp_url: a,
-                    upc: a,
-                    order: b,
-                    tracks: [{
-                        wrapperType: "collection",
-                        collectionType: "Album",
-                        artistId: B,
-                        collectionId: C,
-                        artistName: g,
-                        collectionName: k,
-                        collectionCensoredName: k,
-                        artistViewUrl: D,
-                        collectionViewUrl: "https:\u002F\u002Fmusic.apple.com\u002Fus\u002Falbum\u002F%D1%84%D0%B0%D0%BD%D1%82%D0%B0%D0%B7%D0%B8%D1%8F-single\u002F1630788249?uo=4",
-                        artworkUrl60: E,
-                        artworkUrl100: n,
-                        collectionPrice: q,
-                        collectionExplicitness: r,
-                        contentAdvisoryRating: F,
-                        trackCount: c,
-                        copyright: "℗ 2022 Caspermun",
-                        country: G,
-                        currency: H,
-                        releaseDate: "2022-06-24T07:00:00Z",
-                        primaryGenreName: l
-                    }, {
-                        wrapperType: "track",
-                        kind: "song",
-                        artistId: B,
-                        collectionId: C,
-                        trackId: 1630788251,
-                        artistName: g,
-                        collectionName: k,
-                        trackName: m,
-                        collectionCensoredName: k,
-                        trackCensoredName: m,
-                        artistViewUrl: D,
-                        collectionViewUrl: I,
-                        trackViewUrl: I,
-                        previewUrl: "https:\u002F\u002Faudio-ssl.itunes.apple.com\u002Fitunes-assets\u002FAudioPreview112\u002Fv4\u002F08\u002Fae\u002F95\u002F08ae9588-4462-77a4-37ad-4688fe51b3e3\u002Fmzaf_11412014745752875837.plus.aac.p.m4a",
-                        artworkUrl30: "https:\u002F\u002Fis4-ssl.mzstatic.com\u002Fimage\u002Fthumb\u002FMusic112\u002Fv4\u002Ff3\u002Fb6\u002Fa8\u002Ff3b6a833-2113-2776-85cd-d1c0f6144dfd\u002Fcover.jpg\u002F30x30bb.jpg",
-                        artworkUrl60: E,
-                        artworkUrl100: n,
-                        collectionPrice: q,
-                        trackPrice: q,
-                        collectionExplicitness: r,
-                        trackExplicitness: r,
-                        discCount: c,
-                        discNumber: c,
-                        trackCount: c,
-                        trackNumber: c,
-                        trackTimeMillis: 196364,
-                        country: G,
-                        currency: H,
-                        primaryGenreName: l,
-                        contentAdvisoryRating: F,
-                        isStreamable: s
-                    }],
-                    direct_link: b,
-                    direct_link_time: a,
-                    itunes_player: b,
-                    created_at: "2021-07-21T00:06:05.000000Z",
-                    updated_at: t
-                }, {
-                    id: 4525961,
-                    bandlink_id: f,
-                    url: "https:\u002F\u002Fgeo.music.apple.com\u002Falbum\u002F%D1%84%D0%B0%D0%BD%D1%82%D0%B0%D0%B7%D0%B8%D1%8F-single\u002F1630788249?uo=4&app=apple",
-                    temp_url: a,
-                    upc: a,
-                    order: c,
-                    tracks: [],
-                    direct_link: b,
-                    direct_link_time: a,
-                    itunes_player: b,
-                    created_at: t,
-                    updated_at: t
-                }, {
-                    id: 4525962,
-                    bandlink_id: f,
-                    url: "https:\u002F\u002Fopen.spotify.com\u002Falbum\u002F2snmL8o51BSoLJDpdpHNDs?si=70y88veKQ4uDBgdxgzBlpA",
-                    temp_url: a,
-                    upc: a,
-                    order: 2,
-                    tracks: [],
-                    direct_link: b,
-                    direct_link_time: a,
-                    itunes_player: b,
-                    created_at: "2022-06-24T10:13:42.000000Z",
-                    updated_at: "2022-06-24T10:13:47.000000Z"
-                }, {
-                    id: 4526024,
-                    bandlink_id: f,
-                    url: u,
-                    temp_url: a,
-                    upc: a,
-                    order: 3,
-                    tracks: [],
-                    direct_link: b,
-                    direct_link_time: a,
-                    itunes_player: b,
-                    created_at: "2022-06-24T10:29:34.000000Z",
-                    updated_at: "2022-06-24T10:29:39.000000Z"
-                }, {
-                    id: 4526033,
-                    bandlink_id: f,
-                    url: "https:\u002F\u002Fyoutu.be\u002FGsJwEoXJlZI",
-                    temp_url: a,
-                    upc: a,
-                    order: 4,
-                    tracks: [],
-                    direct_link: b,
-                    direct_link_time: a,
-                    itunes_player: b,
-                    created_at: "2022-06-24T10:31:44.000000Z",
-                    updated_at: J
-                }, {
-                    id: 4526031,
-                    bandlink_id: f,
-                    url: "https:\u002F\u002Fshare.boom.ru\u002Falbum\u002F20382729?share_auth=02be91ce7a9c3abb48811a62b560f0",
-                    temp_url: a,
-                    upc: a,
-                    order: 5,
-                    tracks: [],
-                    direct_link: b,
-                    direct_link_time: a,
-                    itunes_player: b,
-                    created_at: "2022-06-24T10:30:48.000000Z",
-                    updated_at: J
-                }],
-                photos: [],
-                gatings: [],
-                modules: []
-            }, isDesktopDevice: s, iframeVersion: false
-        }],
-        fetch: {},
-        error: a,
-        state: {
-            user: {},
-            itunesPrimaryGenre: d,
-            language: o,
-            referrer: "https:\u002F\u002Fwww.youtube.com\u002F",
-            usedArtists: [],
-            userCountry: a
-        },
-        serverRendered: s,
-        routePath: "\u002Ffantasygirl",
-        config: {_app: {basePath: "\u002F", assetsPath: "\u002F_nuxt\u002F", cdnURL: a}}
-    }
-}(null, 0, 1, "", 3112811, 263916, "Caspermun", "SoundCloud", "play", "rgba(255,255,255, 0)", "Фантазия - Single", "Hip-Hop\u002FRap", "Фантазия", "https:\u002F\u002Fis4-ssl.mzstatic.com\u002Fimage\u002Fthumb\u002FMusic112\u002Fv4\u002Ff3\u002Fb6\u002Fa8\u002Ff3b6a833-2113-2776-85cd-d1c0f6144dfd\u002Fcover.jpg\u002F100x100bb.jpg", "en", "custom_icon2", 1.29, "explicit", true, "2022-06-24T10:12:47.000000Z", "https:\u002F\u002Ft.me\u002Fcaspermvn", "indie", "t.me", "2019-12-25T12:08:56.000000Z", "2021-06-19T11:30:33.000000Z", "2021-07-30T07:22:01.000000Z", "2021-08-15T12:16:26.000000Z", 1467342628, 1630788249, "https:\u002F\u002Fmusic.apple.com\u002Fus\u002Fartist\u002Fcaspermun\u002F1467342628?uo=4", "https:\u002F\u002Fis4-ssl.mzstatic.com\u002Fimage\u002Fthumb\u002FMusic112\u002Fv4\u002Ff3\u002Fb6\u002Fa8\u002Ff3b6a833-2113-2776-85cd-d1c0f6144dfd\u002Fcover.jpg\u002F60x60bb.jpg", "Explicit", "USA", "USD", "https:\u002F\u002Fmusic.apple.com\u002Fus\u002Falbum\u002F%D1%84%D0%B0%D0%BD%D1%82%D0%B0%D0%B7%D0%B8%D1%8F\u002F1630788249?i=1630788251&uo=4", "2022-06-24T10:31:55.000000Z"));</script>
 <script src="https://band.link/_nuxt/c77b0c6.js" defer></script>
 <script src="https://band.link/_nuxt/e862b5c.js" defer></script>
 <script src="https://band.link/_nuxt/6732b0f.js" defer></script>

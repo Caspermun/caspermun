@@ -19,10 +19,10 @@
 <div class="device-notification">
     <a class="device-notification--logo" href="{% url 'index' %}">
         <img src="{{ index.logo.url }}" alt="Global">
-{#        <p>Global</p>#}
-{#    </a>#}
-{#    <p class="device-notification--message">Global has so much to offer that we must request you orient your device to#}
-{#        portrait or find a larger screen. You won't be disappointed.</p>#}
+        {#        <p>Global</p>#}
+    </a>
+    {#    <p class="device-notification--message">Global has so much to offer that we must request you orient your device to#}
+    {#        portrait or find a larger screen. You won't be disappointed.</p>#}
 </div>
 
 <div class="perspective effect-rotate-left">
@@ -90,17 +90,57 @@
                             {#                            <h2>Selected work</h2>#}
                             <div class="work--lockup">
                                 <ul class="slider">
+                                    <li class="slider--item slider--item-left">
+                                        <a href="{% url 'sl' url=albums.2.url %}">
+                                            <div class="slider--item-image">
+                                                <img src="{{ albums.2.cover.url }}" alt="Victory">
+                                            </div>
+                                            <p class="slider--item-title">{{ albums.2.title }}</p>
+                                            {#                                                <p class="slider--item-description">{{ albums.1.artist }}</p>#}
+                                        </a>
+                                    </li>
+                                    <li class="slider--item slider--item-center">
+                                        <a href="{% url 'sl' url=albums.0.url %}">
+                                            <div class="slider--item-image">
+                                                <img src="{{ albums.0.cover.url }}" alt="Victory">
+                                            </div>
+                                            <p class="slider--item-title">{{ albums.0.title }}</p>
+                                            {#                                                <p class="slider--item-description">{{ albums.1.artist }}</p>#}
+                                        </a>
+                                    </li>
+                                    <li class="slider--item slider--item-right">
+                                        <a href="{% url 'sl' url=albums.1.url %}">
+                                            <div class="slider--item-image">
+                                                <img src="{{ albums.1.cover.url }}" alt="Victory">
+                                            </div>
+                                            <p class="slider--item-title">{{ albums.1.title }}</p>
+                                            {#                                                <p class="slider--item-description">{{ albums.1.artist }}</p>#}
+                                        </a>
+                                    </li>
                                     {% for album in albums %}
-                                        <li class="slider--item slider--item{% if forloop.counter0 == 0 %}-center{% elif forloop.counter0 == 1 %}-left{% elif forloop.counter0 == 2 %}-right{% else %}{% endif %}">
-                                            <a href="{% url 'sl' url=album.url %}">
-                                                <div class="slider--item-image">
-                                                    <img src="{{ album.cover.url }}" alt="Victory">
-                                                </div>
-                                                <p class="slider--item-title">{{ album.title }}</p>
-                                                {#                                                <p class="slider--item-description">{{ albums.1.artist }}</p>#}
-                                            </a>
-                                        </li>
+                                        {% if forloop.counter0 >= 3 %}
+                                            <li class="slider--item slider--item">
+                                                <a href="{% url 'sl' url=album.url %}">
+                                                    <div class="slider--item-image">
+                                                        <img src="{{ album.cover.url }}" alt="Victory">
+                                                    </div>
+                                                    <p class="slider--item-title">{{ album.title }}</p>
+                                                    {#                                                <p class="slider--item-description">{{ albums.1.artist }}</p>#}
+                                                </a>
+                                            </li>
+                                        {% endif %}
                                     {% endfor %}
+                                    {#                                    {% for album in albums %}#}
+                                    {#                                        <li class="slider--item slider--item{% if forloop.counter0 == 0 %}-left{% elif forloop.counter0 == 1 %}-center{% elif forloop.counter0 == 2 %}-right{% else %}{% endif %}">#}
+                                    {#                                            <a href="{% url 'sl' url=album.url %}">#}
+                                    {#                                                <div class="slider--item-image">#}
+                                    {#                                                    <img src="{{ album.cover.url }}" alt="Victory">#}
+                                    {#                                                </div>#}
+                                    {#                                                <p class="slider--item-title">{{ album.title }}</p>#}
+                                    {#                                                <p class="slider--item-description">{{ albums.1.artist }}</p>#}
+                                    {#                                            </a>#}
+                                    {#                                        </li>#}
+                                    {#                                    {% endfor %}#}
                                 </ul>
                                 <div class="slider--prev">
                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -142,7 +182,7 @@
 {#                    </svg>#}
                   </span>
                                 </a>
-                                <img src="{% static 'img/about-visual.png' %}" alt="About Us">
+                                <img src="{{ index.ab_banner.url }}" alt="About Us" style="height: 120%">
                             </div>
                             <div class="desc">
                                 <h4>

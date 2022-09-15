@@ -14,11 +14,11 @@ def index(request):
 
 
 def smart_link(request, url):
-    albums = Album.objects.get(url=url)
+    album = Album.objects.get(url=url)
     index = IndexPage.objects.first()
 
     context = {
-        'albums': albums,
+        'album': album,
         'index': index,
     }
     return render(request, 'pages/smart_link.html', context)
