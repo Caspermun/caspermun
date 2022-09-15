@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from caspermun.models import *
 
 
@@ -14,7 +14,7 @@ def index(request):
 
 
 def smart_link(request, url):
-    album = Album.objects.get_object_or_404(url=url)
+    album = get_object_or_404(Album, url=url)
     index = IndexPage.objects.first()
 
     context = {
