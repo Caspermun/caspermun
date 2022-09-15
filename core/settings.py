@@ -29,7 +29,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['caspermun.com', '78.24.220.188', 'localhost', '*']
+ALLOWED_HOSTS = ['caspermun.com', 'www.caspermun.com', '78.24.220.188', 'localhost', '*']
 
 # Application definition
 
