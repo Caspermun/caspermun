@@ -60,6 +60,7 @@ class Album(models.Model):
     cover = models.ImageField('Cover', upload_to=f'tracks/{title}', help_text='Songs cover')
     url = models.CharField('Url', max_length=64, help_text='Url title')
     upload_date = models.DateTimeField('Upload date', default=datetime.datetime.today())
+    views = models.IntegerField(default=0, verbose_name='Views')
 
     def cover_tag(self):
         from django.utils.html import escape

@@ -15,6 +15,8 @@ def index(request):
 
 def smart_link(request, url):
     album = get_object_or_404(Album, url=url)
+    album.views = album.views + 1
+    album.save()
     index = IndexPage.objects.first()
 
     context = {

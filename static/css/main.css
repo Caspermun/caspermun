@@ -707,7 +707,8 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     background-color: transparent;
-    border: none
+    border: none;
+    left: -10px
 }
 
 .intro--banner button .btn-background {
@@ -843,11 +844,11 @@ body {
 
 @media (max-width: 600px) {
     .intro--banner {
-        height: 360px
+        /*height: 360px*/
     }
 
     .intro--banner h1 {
-        /*font-size: 55px*/
+        /*font-size: 40px*/
     }
 
     .intro--banner img {
@@ -1128,7 +1129,7 @@ body {
 
 .about--banner {
     position: relative;
-    height: 475px
+    /*height: 475px*/
 }
 
 .about--banner::before {

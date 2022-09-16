@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <title>Caspermun</title>
+    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,18 +11,14 @@
     <meta name="keywords" content="global, template, html, sass, jquery">
     <meta name="author" content="Bucky Maler">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link href="//db.onlinewebfonts.com/c/0376a58122a881d16a294512d3c947b1?family=ProximaNova-Regular" rel="stylesheet"
-          type="text/css"/>
+    {#    <link href="//db.onlinewebfonts.com/c/0376a58122a881d16a294512d3c947b1?family=ProximaNova-Regular" rel="stylesheet"#}
+    {#          type="text/css"/>#}
 </head>
 <body>
-{% if index.bg_image %}
-    <img src="{{ index.bg_image.url }}" class="back-image" alt="background-image">
-{% else %}
-{% endif %}
 <!-- notification for small viewports and landscape oriented smartphones -->
 <div class="device-notification">
     <a class="device-notification--logo" href="{% url 'index' %}">
-        <img src="{{ index.logo.url }}" alt="Global">
+        <img src="{{ index.logo.url }}" class="logo-cas">
         {#        <p>Global</p>#}
     </a>
     {#    <p class="device-notification--message">Global has so much to offer that we must request you orient your device to#}
@@ -31,6 +28,10 @@
 <div class="perspective effect-rotate-left">
     <div class="container">
         <div class="outer-nav--return"></div>
+        {% if index.bg_image %}
+            <img src="{{ index.bg_image.url }}" class="back-image" alt="background-image">
+        {% else %}
+        {% endif %}
         <div id="viewport" class="l-viewport">
             <div class="l-wrapper">
                 <header class="header">
