@@ -25,6 +25,8 @@ class IndexPage(models.Model):
     c_insta = models.URLField('Instagram', max_length=64)
     c_telegram = models.URLField('Telegram', max_length=64)
 
+    bg_image = models.ImageField('Background image', upload_to='index', null=True, blank=True)
+
     def save(self, *args, **kwargs):
         if IndexPage.objects.count() >= 1:
             return super(IndexPage, self).save(False)
