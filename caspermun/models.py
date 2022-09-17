@@ -21,8 +21,11 @@ class IndexPage(models.Model):
     ab_banner = models.ImageField('About image', upload_to='about', null=True, blank=True)
 
     c_banner = models.ImageField('Contact banner', upload_to='contact_banner', help_text='Photo')
-    c_email = models.URLField('Email', max_length=64)
+    c_deal = models.EmailField('Deal', max_length=64, null=True, blank=True)
+    c_booking = models.EmailField('Booking', max_length=64, null=True, blank=True)
     c_insta = models.URLField('Instagram', max_length=64)
+    c_youtube = models.URLField('YouTube', max_length=64, null=True, blank=True)
+    c_tiktok = models.URLField('TikTok', max_length=64, null=True, blank=True)
     c_telegram = models.URLField('Telegram', max_length=64)
 
     bg_image = models.ImageField('Background image', upload_to='index', null=True, blank=True)

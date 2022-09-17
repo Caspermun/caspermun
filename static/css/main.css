@@ -551,7 +551,12 @@ body {
     opacity: 1;
     visibility: visible;
     -webkit-transition: opacity .4s ease-in-out .4s;
-    transition: opacity .4s ease-in-out .4s
+    transition: .2s ease-in-out
+}
+
+.header--cta.is-active:hover {
+    background-color: #0c0c0c;
+    transition: .2s ease-in-out;
 }
 
 @media (max-width: 767px) {
@@ -1202,13 +1207,21 @@ body {
     left: 10px
 }
 
+.intro--banner .cta svg {
+    transition: left .2s ease-in-out;
+}
+
+.intro--banner .cta:hover svg {
+    left: 10px;
+}
+
 .about--banner a svg {
     position: relative;
     left: 5px;
     width: 15px;
     fill: #fff;
     -webkit-transition: left .2s ease-in-out;
-    transition: left .2s ease-in-out
+    transition: .2s ease-in-out
 }
 
 .about--banner img {
@@ -1397,16 +1410,93 @@ body {
 }
 
 .contact--lockup .modal--information p, .contact--lockup .modal--information a {
+    text-align: left;
     display: block;
-    margin: 14px 0;
+    margin: 0;
     text-decoration: none;
     color: #fff;
+    transition: .4s;
     font-weight: 700
 }
 
 .contact--lockup .modal--information p {
-    margin-top: 0
+    margin-top: 0;
+    text-transform: uppercase;
 }
+
+.contact--lockup .modal--information a:hover {
+    color: #437985;
+    transition: .4s;
+}
+
+.contact--lockup .modal--information .socials {
+    margin: 0;
+}
+
+
+.footer[data-v-0dbd3201] {
+    text-align: center;
+    /*padding: 10px 0;*/
+    white-space: nowrap;
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap;
+    max-width: 375px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.order-link[data-v-0dbd3201] {
+    /*flex: 0 1 54px*/
+}
+
+.order-link[data-v-0dbd3201], .order-link a[data-v-0dbd3201] {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.order-link a[data-v-0dbd3201] {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    /*background-color: #cecece;*/
+    /*margin: 5px;*/
+
+}
+
+.dark .order-link a[data-v-0dbd3201] {
+    background-color: #f8f8f8
+}
+
+.order-link svg[data-v-0dbd3201] {
+    width: 24px;
+    height: 24px
+}
+
+.profile-footer .order-link svg[data-v-0dbd3201] {
+    width: 22px;
+    height: 22px
+}
+
+.order-link svg path[data-v-0dbd3201] {
+    transition: fill .4s
+}
+
+.order-link a:hover svg > g > path[data-v-0dbd3201]:first-child, .order-link a:hover svg > path[data-v-0dbd3201], .yandex_music.order-link a:hover svg > g > path[data-v-0dbd3201] {
+    fill: #437985
+}
+
+.dark .order-link.tiktok a svg .svg-fill-sign-tiktok[data-v-0dbd3201] {
+    fill: #f8f8f8 !important
+}
+
+.order-link.tiktok a:hover svg .svg-fill-bg-tiktok[data-v-0dbd3201] {
+    transition: fill .4s;
+    fill: #437985 !important
+}
+
 
 .contact--lockup .modal--options {
     margin: 0;
