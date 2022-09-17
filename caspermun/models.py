@@ -56,7 +56,7 @@ class Album(models.Model):
     class Meta:
         verbose_name = 'Album'
         verbose_name_plural = 'Albums'
-        # ordering = ['-upload_date']
+        ordering = ['-id']
 
     title = models.CharField('Title', max_length=64)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE, verbose_name='Artist')
