@@ -748,6 +748,7 @@ body {
     bottom: 21px;
     right: -12px;
     object-fit: cover;
+    height: 500px;
 }
 
 .intro--options {
@@ -829,7 +830,7 @@ body {
     }
 
     .intro--banner img {
-        width: 330px
+        /*width: 330px*/
     }
 
     .intro--options {

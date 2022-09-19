@@ -3,9 +3,11 @@
 <html lang="en">
 <head>
     <title>Caspermun</title>
-    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="{% static 'img/favicon180.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon16.png' %}">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,6 +62,7 @@
                     <li class="l-section section section--is-active">
                         <div class="intro">
                             <div class="intro--banner">
+                                <img src="{{ index.ib_image.url }}" alt="Welcome">
                                 <h1 style="text-transform: uppercase"><br><br>{{ index.ib_title }}
                                 </h1>
                                 <button class="cta">Listen
@@ -73,7 +76,6 @@
                   </svg>
                                     {#                                    <span class="btn-background"></span>#}
                                 </button>
-                                <img src="{{ index.ib_image.url }}" alt="Welcome" style="height: 500px">
                             </div>
                             {#                            <div class="intro--options">#}
                             {#                                <a href="#0">#}
