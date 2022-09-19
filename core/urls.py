@@ -21,7 +21,7 @@ from django.urls import path, include
 from caspermun.views import *
 
 urlpatterns = [
-    path('cas_db/', admin.site.urls),
+    path('adminka/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', index, name='index'),
     path('<str:url>/', smart_link, name='sl'),
