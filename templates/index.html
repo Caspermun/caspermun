@@ -102,7 +102,7 @@
                                 <ul class="slider">
                                     {% if albums.2 %}
                                         <li class="slider--item slider--item-left">
-                                            <a href="{% url 'sl' url=albums.2.url %}">
+                                            <a href="{% url 'sl' url=albums.2.url %}" target="_blank">
                                                 <div class="slider--item-image">
                                                     <img src="{{ albums.2.cover.url }}" alt="Victory">
                                                 </div>
@@ -113,7 +113,7 @@
                                     {% endif %}
                                     {% if albums.0 %}
                                         <li class="slider--item slider--item-center">
-                                            <a href="{% url 'sl' url=albums.0.url %}">
+                                            <a href="{% url 'sl' url=albums.0.url %}" target="_blank">
                                                 <div class="slider--item-image">
                                                     <img src="{{ albums.0.cover.url }}" alt="Victory">
                                                 </div>
@@ -123,7 +123,7 @@
                                         </li>
                                     {% endif %}
                                     {% if albums.1 %}
-                                        <li class="slider--item slider--item-right">
+                                        <li class="slider--item slider--item-right" target="_blank">
                                             <a href="{% url 'sl' url=albums.1.url %}">
                                                 <div class="slider--item-image">
                                                     <img src="{{ albums.1.cover.url }}" alt="Victory">
@@ -136,7 +136,7 @@
                                     {% for album in albums %}
                                         {% if forloop.counter0 >= 3 %}
                                             <li class="slider--item slider--item">
-                                                <a href="{% url 'sl' url=album.url %}">
+                                                <a href="{% url 'sl' url=album.url %}" target="_blank">
                                                     <div class="slider--item-image">
                                                         <img src="{{ album.cover.url }}" alt="Victory">
                                                     </div>
@@ -225,10 +225,10 @@
                                 <div class="modal">
                                     <div class="modal--information">
                                         <p>Сотрудничество:</p>
-                                        <a href="mailto:{{ contacts.deal }}">{{ contacts.deal }}</a>
+                                        <a href="mailto:{{ contacts.deal }}" target="_blank">{{ contacts.deal }}</a>
                                         <br>
                                         <p>Booking:</p>
-                                        <a href="mailto:{{ contacts.booking }}">{{ contacts.booking }}</a>
+                                        <a href="mailto:{{ contacts.booking }}" target="_blank">{{ contacts.booking }}</a>
                                         <br>
                                         <p>Социальные сети:</p>
                                         <div class="socials">
