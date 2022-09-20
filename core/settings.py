@@ -231,7 +231,7 @@ JAZZMIN_SETTINGS = {
         {"model": "auth.user"}
     ],
     # Use modals instead of popups
-    "related_modal_active": True,
+    "related_modal_active": False,
     # Render out the change view as a single form, or in tabs, current options are
     # - single
     # - horizontal_tabs (default)
