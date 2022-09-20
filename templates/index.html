@@ -123,8 +123,8 @@
                                         </li>
                                     {% endif %}
                                     {% if albums.1 %}
-                                        <li class="slider--item slider--item-right" target="_blank">
-                                            <a href="{% url 'sl' url=albums.1.url %}">
+                                        <li class="slider--item slider--item-right">
+                                            <a href="{% url 'sl' url=albums.1.url %}" target="_blank">
                                                 <div class="slider--item-image">
                                                     <img src="{{ albums.1.cover.url }}" alt="Victory">
                                                 </div>
@@ -228,7 +228,8 @@
                                         <a href="mailto:{{ contacts.deal }}" target="_blank">{{ contacts.deal }}</a>
                                         <br>
                                         <p>Booking:</p>
-                                        <a href="mailto:{{ contacts.booking }}" target="_blank">{{ contacts.booking }}</a>
+                                        <a href="mailto:{{ contacts.booking }}"
+                                           target="_blank">{{ contacts.booking }}</a>
                                         <br>
                                         <p>Социальные сети:</p>
                                         <div class="socials">
