@@ -30,7 +30,7 @@ class Artist(models.Model):
     name = models.CharField('Name', max_length=64)
     surname = models.CharField('Surname', max_length=64)
     image = models.ImageField('Image', upload_to=f'artists/{nickname}', help_text='Photo', null=True, blank=True)
-    bio = models.CharField('Bio', help_text='Shows in about page', max_length=2048)
+    bio = models.CharField('Bio', help_text='Shows in about page', max_length=2048, null=True, blank=True)
     birthday = BirthdayField('Birthday')
 
     def __str__(self):
