@@ -950,13 +950,16 @@ body {
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
-    transition: .2s;
 }
 
-.work--lockup .slider--item-title:hover {
-    color: #437985;
-    transition: .2s;
-}
+/*.work--lockup .slider--item-title:hover {*/
+/*    color: #437985;*/
+/*    transition: .2s;*/
+/*}*/
+
+/*.work--lockup .slider--item-title {*/
+/*    transition: .2s;*/
+/*}*/
 
 .work--lockup .slider--item-description {
     display: none;
