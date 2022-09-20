@@ -20,6 +20,8 @@ from django.urls import path, include
 
 from caspermun.views import *
 
+handler404 = 'caspermun.views.error_404'
+
 urlpatterns = [
     path('adminka/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),

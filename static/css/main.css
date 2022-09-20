@@ -510,7 +510,13 @@ body {
     position: relative;
     width: 16px;
     height: 2px;
-    background-color: #fff
+    background-color: #fff;
+    transition: .2s;
+}
+
+.header--nav-toggle span:hover, .header--nav-toggle::before:hover, .header--nav-toggle::after:hover {
+    background-color: #437985;
+    transition: .2s;
 }
 
 .header--nav-toggle::before {
@@ -943,7 +949,13 @@ body {
     margin-top: 10px;
     font-size: 12px;
     font-weight: 700;
-    text-transform: uppercase
+    text-transform: uppercase;
+    transition: .2s;
+}
+
+.work--lockup .slider--item-title:hover {
+    color: #437985;
+    transition: .2s;
 }
 
 .work--lockup .slider--item-description {
@@ -1029,9 +1041,15 @@ body {
     cursor: pointer
 }
 
+div.slider--next:hover > svg, div.slider--prev:hover > svg {
+    fill: #437985;
+    transition: .2s;
+}
+
 .work--lockup .slider--next svg, .work--lockup .slider--prev svg {
     width: 20px;
-    fill: #fff
+    fill: #fff;
+    transition: .2s;
 }
 
 .work--lockup .slider--next {
@@ -1849,7 +1867,7 @@ body {
 }
 
 .outer-nav.is-vis {
-    visibility: visible
+    visibility: visible;
 }
 
 .outer-nav--return {
@@ -1892,23 +1910,27 @@ body {
     transition: transform .4s, opacity .4s, -webkit-transform .4s
 }
 
-.outer-nav > li::before {
-    /*background-image: url("../img/right-arrow.png");*/
-    /*background-color: red;*/
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -25%);
-    transform: translate(-50%, -25%);
-    width: 110%;
-    height: 15px;
-    opacity: 0;
-    background-color: #437985
+.outer-nav > li.is-vis:hover {
+    color: #437985;
+    transition: .2s;
 }
 
-.outer-nav > li.is-active::before {
-    opacity: 1
+/*.outer-nav > li::before {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    -webkit-transform: translate(-50%, -25%);*/
+/*    transform: translate(-50%, -25%);*/
+/*    width: 110%;*/
+/*    height: 15px;*/
+/*    opacity: 0;*/
+/*    background-color: #437985*/
+/*}*/
+
+.outer-nav > li.is-active {
+    /*opacity: 1*/
+    color: #437985;
 }
 
 @media (max-width: 767px) {

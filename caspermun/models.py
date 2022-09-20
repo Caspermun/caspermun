@@ -3,41 +3,26 @@ import datetime
 from birthday import BirthdayField
 from django.db import models
 from django.utils.html import format_html
-from django.utils.safestring import mark_safe
 
 
-class IndexPage(models.Model):
+class Main(models.Model):
     class Meta:
-        verbose_name = 'Index page'
-        verbose_name_plural = 'Index page'
+        verbose_name = 'Main'
+        verbose_name_plural = 'Main'
 
-    logo = models.FileField('Logo', upload_to='logo', help_text='Logo',)
-
-    ib_title = models.CharField('Title', max_length=64, help_text='Name')
-    ib_image = models.ImageField('Intro image', upload_to='intro_banner', help_text='Photo')
-
-    ab_title = models.CharField('Title', max_length=512,help_text='About')
-    ab_description = models.CharField('Description', max_length=512, help_text='About')
-    ab_banner = models.ImageField('About image', upload_to='about', null=True, blank=True)
-
-    c_banner = models.ImageField('Contact banner', upload_to='contact_banner', help_text='Photo')
-    c_deal = models.EmailField('Deal', max_length=64, null=True, blank=True)
-    c_booking = models.EmailField('Booking', max_length=64, null=True, blank=True)
-    c_insta = models.URLField('Instagram', max_length=64)
-    c_youtube = models.URLField('YouTube', max_length=64, null=True, blank=True)
-    c_tiktok = models.URLField('TikTok', max_length=64, null=True, blank=True)
-    c_telegram = models.URLField('Telegram', max_length=64)
-
-    bg_image = models.ImageField('Background image', upload_to='index', null=True, blank=True)
+    logo = models.FileField('Logo', upload_to='logo', help_text='Logo', )
+    title = models.CharField('Title', max_length=64, help_text='Name')
+    image = models.ImageField('Intro image', upload_to='intro_banner', help_text='Photo')
+    bg_image = models.ImageField('For mobile devices', upload_to='index', null=True, blank=True)
 
     def save(self, *args, **kwargs):
-        if IndexPage.objects.count() >= 1:
-            return super(IndexPage, self).save(False)
+        if Main.objects.count() >= 1:
+            return super(Main, self).save(False)
         else:
-            return super(IndexPage, self).save(*args, **kwargs)
+            return super(Main, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.ib_title
+        return 'Main'
 
 
 class Artist(models.Model):
@@ -45,11 +30,52 @@ class Artist(models.Model):
     name = models.CharField('Name', max_length=64)
     surname = models.CharField('Surname', max_length=64)
     image = models.ImageField('Image', upload_to=f'artists/{nickname}', help_text='Photo', null=True, blank=True)
-    bio = models.CharField('Bio', max_length=256, null=True, blank=True)
+    bio = models.CharField('Bio', help_text='Shows in about page', max_length=2048)
     birthday = BirthdayField('Birthday')
 
     def __str__(self):
         return self.nickname
+
+
+class About(models.Model):
+    class Meta:
+        verbose_name = 'About'
+        verbose_name_plural = 'About'
+
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE, verbose_name='Artist')
+    banner = models.ImageField('About image', upload_to='about', null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if About.objects.count() >= 1:
+            return super(About, self).save(False)
+        else:
+            return super(About, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return 'About'
+
+
+class Contacts(models.Model):
+    class Meta:
+        verbose_name = 'Contact'
+        verbose_name_plural = 'Contacts'
+
+    banner = models.ImageField('Contact banner', upload_to='contact_banner', help_text='Background image')
+    deal = models.EmailField('Deal', max_length=64)
+    booking = models.EmailField('Booking', max_length=64)
+    insta = models.URLField('Instagram', max_length=64)
+    youtube = models.URLField('YouTube', max_length=64)
+    tiktok = models.URLField('TikTok', max_length=64)
+    telegram = models.URLField('Telegram', max_length=64)
+
+    def save(self, *args, **kwargs):
+        if Contacts.objects.count() >= 1:
+            return super(Contacts, self).save(False)
+        else:
+            return super(Contacts, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return 'Contacts'
 
 
 class Album(models.Model):
@@ -67,13 +93,10 @@ class Album(models.Model):
 
     def cover_tag(self):
         from django.utils.html import escape
-        return format_html('<img src="/media/%s" height="100" />' % format(self.cover))
+        return format_html('<img src="/media/%s" width="100px" />' % format(self.cover))
 
-    cover_tag.short_description = 'Cover'
+    cover_tag.short_description = 'Check cover'
     cover_tag.allow_tags = True
-
-    def __str__(self):
-        return f'{self.artist.nickname} - {self.title}'
 
 
 class Track(models.Model):

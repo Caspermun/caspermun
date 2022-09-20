@@ -27,7 +27,7 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ["https://caspermun.com", "https://www.caspermun.com"]
@@ -35,6 +35,7 @@ CSRF_TRUSTED_ORIGINS = ["https://caspermun.com", "https://www.caspermun.com"]
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -203,4 +204,45 @@ CKEDITOR_CONFIGS = {
             'youtube'
         ]),
     }
+}
+
+# JAZZMIN
+
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "Caspermun",
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "Caspermun",
+    # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_brand": "Admin Panel",
+    # Logo to use for your site, must be present in static files, used for brand on top left
+    "site_logo": "img/apple-touch-icon.png",
+    # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
+    # "site_icon": 'img/favicon-32x32.png',
+    # Welcome text on the login screen
+    "welcome_sign": "Welcome back!",
+    # Copyright on the footer
+    "copyright": "Caspermun",
+    # Hide these apps when generating side menu e.g (auth)
+    "hide_apps": ['auth'],
+    # Additional links to include in the user menu on the top right ("app" url type is not allowed)
+    "usermenu_links": [
+        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+        {"model": "auth.user"}
+    ],
+    # Use modals instead of popups
+    "related_modal_active": True,
+    # Render out the change view as a single form, or in tabs, current options are
+    # - single
+    # - horizontal_tabs (default)
+    # - vertical_tabs
+    # - collapsible
+    # - carousel
+    "changeform_format": "vertical_tabs",
+    "show_ui_builder": True,
+
+}
+
+JAZZMIN_UI_TWEAKS = {
+    "theme": "darkly",
 }

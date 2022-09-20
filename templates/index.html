@@ -11,6 +11,7 @@
     <meta name="keywords" content="casper, caspermun, каспер, каспермун, пустота, красота">
     <meta name="author" content="Caspermun">
     <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="shortcut icon" href="{% static 'img/apple-touch-icon.png' %}" type="image/png">
     <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
     <link rel="mask-icon" href="{% static 'img/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
@@ -23,7 +24,7 @@
 <!-- notification for small viewports and landscape oriented smartphones -->
 <div class="device-notification">
     <a class="device-notification--logo" href="{% url 'index' %}">
-        <img src="{{ index.logo.url }}" class="logo-cas">
+        <img src="{{ main.logo.url }}" class="logo-cas">
         {#        <p>Global</p>#}
     </a>
     {#    <p class="device-notification--message">Global has so much to offer that we must request you orient your device to#}
@@ -33,15 +34,15 @@
 <div class="perspective effect-rotate-left">
     <div class="container">
         <div class="outer-nav--return"></div>
-        {% if index.bg_image %}
-            <img src="{{ index.bg_image.url }}" class="back-image" alt="background-image">
+        {% if main.bg_image %}
+            <img src="{{ main.bg_image.url }}" class="back-image" alt="background-image">
         {% else %}
         {% endif %}
         <div id="viewport" class="l-viewport">
             <div class="l-wrapper">
                 <header class="header">
                     <a class="header--logo" href="{% url 'index' %}">
-                        <img src="{{ index.logo.url }}" alt="Caspermun"
+                        <img src="{{ main.logo.url }}" alt="Caspermun"
                              style="width: 150px">
                         {#                        <p>Global</p>#}
                     </a>
@@ -63,8 +64,8 @@
                     <li class="l-section section section--is-active">
                         <div class="intro">
                             <div class="intro--banner">
-                                <img src="{{ index.ib_image.url }}" alt="Welcome" style="height: 500px">
-                                <h1 style="text-transform: uppercase"><br><br>{{ index.ib_title }}
+                                <img src="{{ main.image.url }}" alt="Welcome" style="height: 500px">
+                                <h1 style="text-transform: uppercase"><br><br>{{ main.title }}
                                 </h1>
                                 <button class="cta">Listen
                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -185,7 +186,8 @@
                     <li class="l-section section">
                         <div class="about">
                             <div class="about--banner">
-                                <h2 style="text-transform: uppercase"><br>{{ index.ab_title|safe }}</h2>
+                                <h2 style="text-transform: uppercase">
+                                    <br>{{ about.artist.name }} {{ about.artist.surname }}</h2>
                                 <a>Info
                                     <span>
 {#                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"#}
@@ -197,11 +199,11 @@
 {#                    </svg>#}
                   </span>
                                 </a>
-                                <img src="{{ index.ab_banner.url }}" alt="About Us" style="height: 120%">
+                                <img src="{{ about.banner.url }}" alt="About Us" style="height: 500px">
                             </div>
                             <div class="desc">
                                 <h4>
-                                    {{ index.ab_description|safe }}
+                                    {{ about.artist.bio|safe }}
                                 </h4>
                             </div>
                             {#                            <div class="about--options">#}
@@ -218,22 +220,22 @@
                         </div>
                     </li>
                     <li class="l-section section">
-                        <div class="contact" style="background-image: url({{ index.c_banner.url }})">
+                        <div class="contact" style="background-image: url({{ contacts.banner.url }})">
                             <div class="contact--lockup">
                                 <div class="modal">
                                     <div class="modal--information">
                                         <p>Сотрудничество:</p>
-                                        <a href="mailto:{{ index.c_deal }}">{{ index.c_deal }}</a>
+                                        <a href="mailto:{{ contacts.deal }}">{{ contacts.deal }}</a>
                                         <br>
                                         <p>Booking:</p>
-                                        <a href="mailto:{{ index.c_booking }}">{{ index.c_booking }}</a>
+                                        <a href="mailto:{{ contacts.booking }}">{{ contacts.booking }}</a>
                                         <br>
                                         <p>Социальные сети:</p>
                                         <div class="socials">
                                             <section class="footer bandlink-section order-block air__theme order-1"
                                                      data-v-0dbd3201="" data-v-7c0e0e46=""><!----> <!---->
                                                 <div class="order-link telegram order-1" data-v-0dbd3201=""><a
-                                                        rel="nofollow" href="{{ index.c_telegram }}" target="_blank"
+                                                        rel="nofollow" href="{{ contacts.telegram }}" target="_blank"
                                                         data-v-0dbd3201="">
                                                     <svg xmlns="http://www.w3.org/2000/svg" data-icon="telegram"
                                                          width="448" height="376" viewBox="0 0 448 376"
@@ -244,7 +246,7 @@
                                                     </svg>
                                                 </a></div>
                                                 <div class="order-link youtube order-1" data-v-0dbd3201=""><a
-                                                        rel="nofollow" href="{{ index.c_youtube }}"
+                                                        rel="nofollow" href="{{ contacts.youtube }}"
                                                         target="_blank" data-v-0dbd3201="">
                                                     <svg xmlns="http://www.w3.org/2000/svg" data-icon="youtube"
                                                          width="546" height="384" viewBox="0 0 546 384"
@@ -255,7 +257,7 @@
                                                     </svg>
                                                 </a></div>
                                                 <div class="order-link tiktok order-1" data-v-0dbd3201=""><a
-                                                        rel="nofollow" href="{{ index.c_tiktok }}"
+                                                        rel="nofollow" href="{{ contacts.tiktok }}"
                                                         target="_blank" data-v-0dbd3201="">
                                                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                                          xmlns="http://www.w3.org/2000/svg" data-v-0dbd3201="">
@@ -288,7 +290,7 @@
                                                     </svg>
                                                 </a></div>
                                                 <div class="order-link instagram order-1" data-v-0dbd3201=""><a
-                                                        rel="nofollow" href="{{ index.c_insta }}"
+                                                        rel="nofollow" href="{{ contacts.insta }}"
                                                         target="_blank" data-v-0dbd3201="">
                                                     <svg xmlns="http://www.w3.org/2000/svg" data-icon="instagram"
                                                          width="448" height="448" viewBox="0 0 448 448"
@@ -372,9 +374,9 @@
                                         </div>
                                     </div>
                                     {#                                    <ul class="modal--options">#}
-                                    {#                                        <li><a href="mailto:{{ index.c_email }}">Email</a></li>#}
-                                    {#                                        <li><a href="{{ index.c_insta }}">Instagram</a></li>#}
-                                    {#                                        <li><a href="{{ index.c_telegram }}">Telegram</a></li>#}
+                                    {#                                        <li><a href="mailto:{{ main.c_email }}">Email</a></li>#}
+                                    {#                                        <li><a href="{{ main.c_insta }}">Instagram</a></li>#}
+                                    {#                                        <li><a href="{{ main.c_telegram }}">Telegram</a></li>#}
                                     {#                                    </ul>#}
                                 </div>
                             </div>

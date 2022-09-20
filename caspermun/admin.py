@@ -36,19 +36,37 @@ class AlbumAdmin(admin.ModelAdmin):
     list_per_page = 10
 
 
-class IndexPageAdminForm(forms.ModelForm):
+@admin.register(Main)
+class MainAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request, obj=None):
+        num_objects = self.model.objects.count()
+        if num_objects >= 1:
+            return False
+        else:
+            return True
+
+
+class ArtistAdminForm(forms.ModelForm):
     class Meta:
-        model = IndexPage
+        model = Artist
         fields = '__all__'
 
-    ab_title = forms.CharField(label='Title', widget=CKEditorUploadingWidget())
-    ab_description = forms.CharField(label='Description', widget=CKEditorUploadingWidget())
+    # title = forms.CharField(label='Title', widget=CKEditorUploadingWidget())
+    bio = forms.CharField(label='Bio', widget=CKEditorUploadingWidget())
 
 
-@admin.register(IndexPage)
-class IndexPageAdmin(admin.ModelAdmin):
-    form = IndexPageAdminForm
+@admin.register(About)
+class AboutAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request, obj=None):
+        num_objects = self.model.objects.count()
+        if num_objects >= 1:
+            return False
+        else:
+            return True
 
+
+@admin.register(Contacts)
+class ContactsAdmin(admin.ModelAdmin):
     def has_add_permission(self, request, obj=None):
         num_objects = self.model.objects.count()
         if num_objects >= 1:
@@ -59,6 +77,7 @@ class IndexPageAdmin(admin.ModelAdmin):
 
 @admin.register(Artist)
 class ArtistAdmin(admin.ModelAdmin):
+    form = ArtistAdminForm
     fieldsets = ((None, {'fields': ('nickname', 'name', 'surname', 'image', 'bio', 'birthday')}),)
     list_display = ('nickname', 'name', 'surname')
     list_display_links = ('nickname', 'name', 'surname')
