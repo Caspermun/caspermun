@@ -1,0 +1,10 @@
+.accent-primary .btn-link, .accent-primary .nav-tabs .nav-link, .accent-primary a:not(.dropdown-item):not(.btn-app):not(.nav-link):not(.brand-link):not(.page-link):not(.btn) {
+    color: #fff;
+    transition: .2s;
+}
+
+.accent-primary .btn-link:hover, .accent-primary .nav-tabs .nav-link:hover, .accent-primary a:not(.dropdown-item):not(.btn-app):not(.nav-link):not(.brand-link):not(.page-link):not(.btn):hover {
+    color: #3f6791;
+    text-decoration: None;
+    transition: .2s;
+}
