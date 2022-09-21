@@ -5,6 +5,8 @@ from core import settings
 
 def index(request):
     main = Main.objects.first()
+    main.views += 1
+    main.save()
     about = About.objects.first()
     contacts = Contacts.objects.first()
     albums = Album.objects.all()
@@ -20,7 +22,7 @@ def index(request):
 
 def smart_link(request, url):
     album = get_object_or_404(Album, url=url)
-    album.views = album.views + 1
+    album.views += 1
     album.save()
     main = Main.objects.first()
     contacts = Contacts.objects.first()

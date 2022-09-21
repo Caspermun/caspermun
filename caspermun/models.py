@@ -14,6 +14,7 @@ class Main(models.Model):
     title = models.CharField('Title', max_length=64, help_text='Name')
     image = models.ImageField('Intro image', upload_to='intro_banner', help_text='Photo')
     bg_image = models.ImageField('For mobile devices', upload_to='index', null=True, blank=True)
+    views = models.IntegerField(default=0, verbose_name='Views')
 
     def save(self, *args, **kwargs):
         if Main.objects.count() >= 1:
