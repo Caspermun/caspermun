@@ -1,20 +1,20 @@
 const darkMode = document.querySelector(".theme-toggle");
 
 function darkify() {
-    if(localStorage.getItem('toggle')){
-        document.documentElement.classList.toggle(localStorage.getItem('toggle'))
-        localStorage.removeItem('toggle')
+    if(sessionStorage.getItem('toggle')){
+        document.documentElement.classList.toggle(sessionStorage.getItem('toggle'))
+        sessionStorage.removeItem('toggle')
     } else {
-        localStorage.setItem('toggle', 'theme--night')
-        document.documentElement.classList.toggle(localStorage.getItem('toggle'))
+        sessionStorage.setItem('toggle', 'theme--night')
+        document.documentElement.classList.toggle(sessionStorage.getItem('toggle'))
     }
 }
 
 darkMode.addEventListener("click", darkify);
 
 const check = () => {
-    if(localStorage.getItem('toggle')){
-        document.documentElement.classList.toggle(localStorage.getItem('toggle'))
+    if(sessionStorage.getItem('toggle')){
+        document.documentElement.classList.toggle(sessionStorage.getItem('toggle'))
     }
 }
 
