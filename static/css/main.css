@@ -56,21 +56,21 @@ body {
 /*dark/light switcher*/
 
 :root {
-    --color-primary: #f2f2f2;
-    --color-primary-light: #437985;
-    --color-secondary: #0c0c0c;
-    --color-text: #0c0c0c;
-    --invert-logo: invert(1);
-    --track-hover: #c9c9c9;
-}
-
-:root.theme--night {
     --color-primary: #0c0c0c;
     --color-primary-light: #fff;
     --color-secondary: #437985;
     --color-text: #fff;
     --invert-logo: invert(0);
     --track-hover: #101010;
+}
+
+:root.theme--night {
+    --color-primary: #f2f2f2;
+    --color-primary-light: #437985;
+    --color-secondary: #0c0c0c;
+    --color-text: #0c0c0c;
+    --invert-logo: invert(1);
+    --track-hover: #c9c9c9;
 }
 
 * {
@@ -98,7 +98,7 @@ body {
 }
 
 .theme-toggle .sun {
-    background: var(--color-secondary);
+    background: var(--color-text);
     width: 37px;
     height: 37px;
     border-radius: 50%;
@@ -107,7 +107,7 @@ body {
 
 .theme-toggle .sun__ray {
     width: 2px;
-    background: var(--color-secondary);
+    background: var(--color-text);
     display: block;
     height: 121%;
     position: absolute;
@@ -2234,11 +2234,11 @@ div.slider--next:hover > svg, div.slider--prev:hover > svg {
     display: flex;
     position: relative;
     background-color: transparent;
-    max-width: 660px;
+    width: 100%;
     align-items: center;
     justify-content: center;
-    border-radius: 13px;
-    box-shadow: 0 0 10px #0c0c0c;
+    /*border-radius: 13px;*/
+    /*box-shadow: 0 0 10px #0c0c0c;*/
 }
 
 .left-bar {
@@ -2516,7 +2516,6 @@ svg {
     /*    justify-content: center;*/
     /*    !*margin: 0 auto;*!*/
     /*}*/
-
     .left-bar {
         display: block;
         position: relative;
