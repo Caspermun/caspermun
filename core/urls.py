@@ -26,6 +26,7 @@ urlpatterns = [
     path('adminka/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', index, name='index'),
+    path('tracks/<str:url>/', album_detail, name='album_detail'),
     path('<str:url>/', smart_link, name='sl'),
 ]
 

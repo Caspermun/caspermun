@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html id="html" lang="en">
 <head>
     <title>Caspermun</title>
     <meta charset="utf-8">
@@ -25,13 +25,22 @@
 <div class="device-notification">
     <a class="device-notification--logo" href="{% url 'index' %}">
         <img src="{{ main.logo.url }}" class="logo-cas">
-        {#        <p>Global</p>#}
+        {#        <p></p>#}
     </a>
-    {#    <p class="device-notification--message">Global has so much to offer that we must request you orient your device to#}
-    {#        portrait or find a larger screen. You won't be disappointed.</p>#}
+    {#    <p class="device-notification--message"></p>#}
 </div>
 
 <div class="perspective effect-rotate-left">
+    <div class="theme-toggle theme-toggle-js">
+        <span class="moon"></span>
+        <span class="sun"></span>
+        <small class="sun__ray"></small>
+        <small class="sun__ray"></small>
+        <small class="sun__ray"></small>
+        <small class="sun__ray"></small>
+        <small class="sun__ray"></small>
+        <small class="sun__ray"></small>
+    </div>
     <div class="container">
         <div class="outer-nav--return"></div>
         {% if main.bg_image %}
@@ -76,23 +85,8 @@
                     <path d="M870,1167c-34-17-55-57-46-90c3-15,81-100,194-211l187-185l-565-1c-431,0-571-3-590-13c-55-28-64-94-18-137c21-20,33-20,597-20h575l-192-193C800,103,794,94,849,39c20-20,39-29,61-29c28,0,63,30,298,262c147,144,272,271,279,282c30,51,23,60-219,304C947,1180,926,1196,870,1167z"/>
                   </g>
                   </svg>
-                                    {#                                    <span class="btn-background"></span>#}
                                 </button>
                             </div>
-                            {#                            <div class="intro--options">#}
-                            {#                                <a href="#0">#}
-                            {#                                    <h3>Metiew &amp; Smith</h3>#}
-                            {#                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>#}
-                            {#                                </a>#}
-                            {#                                <a href="#0">#}
-                            {#                                    <h3>Fantasy interactive</h3>#}
-                            {#                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>#}
-                            {#                                </a>#}
-                            {#                                <a href="#0">#}
-                            {#                                    <h3>Paul &amp; shark</h3>#}
-                            {#                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p>#}
-                            {#                                </a>#}
-                            {#                            </div>#}
                         </div>
                     </li>
                     <li class="l-section section">
@@ -102,7 +96,7 @@
                                 <ul class="slider">
                                     {% if albums.2 %}
                                         <li class="slider--item slider--item-left">
-                                            <a href="{% url 'sl' url=albums.2.url %}" target="_blank">
+                                            <a href="{% url 'album_detail' url=albums.2.url %}">
                                                 <div class="slider--item-image">
                                                     <img src="{{ albums.2.cover.url }}" alt="Victory">
                                                 </div>
@@ -113,7 +107,7 @@
                                     {% endif %}
                                     {% if albums.0 %}
                                         <li class="slider--item slider--item-center">
-                                            <a href="{% url 'sl' url=albums.0.url %}" target="_blank">
+                                            <a href="{% url 'album_detail' url=albums.0.url %}">
                                                 <div class="slider--item-image">
                                                     <img src="{{ albums.0.cover.url }}" alt="Victory">
                                                 </div>
@@ -124,7 +118,7 @@
                                     {% endif %}
                                     {% if albums.1 %}
                                         <li class="slider--item slider--item-right">
-                                            <a href="{% url 'sl' url=albums.1.url %}" target="_blank">
+                                            <a href="{% url 'album_detail' url=albums.1.url %}">
                                                 <div class="slider--item-image">
                                                     <img src="{{ albums.1.cover.url }}" alt="Victory">
                                                 </div>
@@ -136,7 +130,7 @@
                                     {% for album in albums %}
                                         {% if forloop.counter0 >= 3 %}
                                             <li class="slider--item slider--item">
-                                                <a href="{% url 'sl' url=album.url %}" target="_blank">
+                                                <a href="{% url 'album_detail' url=album.url %}">
                                                     <div class="slider--item-image">
                                                         <img src="{{ album.cover.url }}" alt="Victory">
                                                     </div>
@@ -146,17 +140,6 @@
                                             </li>
                                         {% endif %}
                                     {% endfor %}
-                                    {#                                    {% for album in albums %}#}
-                                    {#                                        <li class="slider--item slider--item{% if forloop.counter0 == 0 %}-left{% elif forloop.counter0 == 1 %}-center{% elif forloop.counter0 == 2 %}-right{% else %}{% endif %}">#}
-                                    {#                                            <a href="{% url 'sl' url=album.url %}">#}
-                                    {#                                                <div class="slider--item-image">#}
-                                    {#                                                    <img src="{{ album.cover.url }}" alt="Victory">#}
-                                    {#                                                </div>#}
-                                    {#                                                <p class="slider--item-title">{{ album.title }}</p>#}
-                                    {#                                                <p class="slider--item-description">{{ albums.1.artist }}</p>#}
-                                    {#                                            </a>#}
-                                    {#                                        </li>#}
-                                    {#                                    {% endfor %}#}
                                 </ul>
                                 <div class="slider--prev">
                                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -206,17 +189,6 @@
                                     {{ about.artist.bio|safe }}
                                 </h4>
                             </div>
-                            {#                            <div class="about--options">#}
-                            {#                                <a href="#0">#}
-                            {#                                    <h3>Winners</h3>#}
-                            {#                                </a>#}
-                            {#                                <a href="#0">#}
-                            {#                                    <h3>Philosophy</h3>#}
-                            {#                                </a>#}
-                            {#                                <a href="#0">#}
-                            {#                                    <h3>History</h3>#}
-                            {#                                </a>#}
-                            {#                            </div>#}
                         </div>
                     </li>
                     <li class="l-section section">
@@ -490,5 +462,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"><\/script>')</script>
 <script src="{% static 'js/functions-min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
 </body>
 </html>

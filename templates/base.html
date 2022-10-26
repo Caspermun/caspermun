@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Caspermun</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="turbolinks-cache-control" content="no-cache">
+    <meta name="description" content="Официальный сайт исполнителя Нурсултана Мирланова (Caspermun).">
+    <meta name="keywords" content="casper, caspermun, каспер, каспермун, пустота, красота">
+    <meta name="author" content="Caspermun">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="shortcut icon" href="{% static 'img/apple-touch-icon.png' %}" type="image/png">
+    <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    {#    <link href="//db.onlinewebfonts.com/c/0376a58122a881d16a294512d3c947b1?family=ProximaNova-Regular" rel="stylesheet"#}
+    {#          type="text/css"/>#}
+</head>
+<body>
+<div id="viewport" class="l-viewport">
+    <div class="l-wrapper">
+        <header class="header">
+            <a class="header--logo" href="{% url 'index' %}">
+                <img src="{{ main.logo.url }}" alt="Caspermun"
+                     style="width: 150px">
+            </a>
+            <div class="theme-toggle theme-toggle-js visible" style="right: 40px">
+                <span class="moon"></span>
+                <span class="sun"></span>
+                <small class="sun__ray"></small>
+                <small class="sun__ray"></small>
+                <small class="sun__ray"></small>
+                <small class="sun__ray"></small>
+                <small class="sun__ray"></small>
+                <small class="sun__ray"></small>
+            </div>
+        </header>
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"><\/script>')</script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/music_player.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="album-detail" class="album-detail">
+        <div id="itunes-content" class="itunes-content">
+            <iframe class=".copyright" allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450"
+                    style="width:100%;max-width:660px;overflow:hidden;background:transparent;"
+                    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                    src="{{ album.html }}"></iframe>
+        </div>
+        <div id="smart-link" class="smart-link">
+            <a class="sl-a" href="{% url 'sl' url=album.url %}" target="_blank">
+                <div class="button-div">
+                    <h3>
+                        Smart link
+                    </h3>
+                </div>
+            </a>
+        </div>
+        <p class="copyright">
+            ℗ {{ album.upload_date.year }} Caspermun
+        </p>
+        {#        <div id="left-bar" class="left-bar">#}
+        {#            <img src="{{ album.cover.url }}" alt="cover">#}
+        {#            <div id="album-info" class="album-info">#}
+        {#                <h3 id="album-title" class="album-title">#}
+        {#                    {{ album.title }}#}
+        {#                    {% if album.explicit %}#}
+        {#                        <span class="explicit-badge" aria-label="Explicit" role="img">#}
+        {#                            <svg width="9" height="9" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg" class="glyph"#}
+        {#                                 aria-hidden="true">#}
+        {#                            <path d="M1.59 8.991h5.82c1.043 0 1.582-.538 1.582-1.566v-5.85C8.992.547 8.453.008 7.41.008H1.59C.552.008.008.542.008 1.575v5.85c0 1.028.544 1.566 1.582 1.566zm1.812-2.273c-.332 0-.505-.211-.505-.553V2.753c0-.341.173-.553.505-.553h2.264c.245 0 .408.14.408.385 0 .235-.163.384-.408.384H3.854v1.106h1.71c.226 0 .38.125.38.355 0 .221-.154.346-.38.346h-1.71V5.95h1.812c.245 0 .408.14.408.385 0 .235-.163.384-.408.384H3.402z"></path></svg>#}
+        {#                        </span>#}
+        {#                    {% endif %}#}
+        {#                </h3>#}
+        {#                <h3 id="album-artist" class="album-artist">{{ album.artist.nickname }}</h3>#}
+        {#                <p class="genre">{{ album.get_genre_display }}</p>#}
+        {#                <p class="upload-date" style="top: -45px">{{ album.upload_date.year }}</p>#}
+        {#            </div>#}
+
+        {#        </div>#}
+        {#        <div id="right-bar" class="right-bar">#}
+        {#            <div id="tracks" class="tracks">#}
+        {#                {% for track in tracks %}#}
+        {#                    <div id="track-{{ forloop.counter }}" class="track" tabindex="{{ forloop.counter }}">#}
+        {#                        <div id="track-info" class="track-info">#}
+        {#                            <div id="track-id{{ forloop.counter }}" class="track-id"#}
+        {#                                 onclick="player([$('#track-id{{ forloop.counter }}').find('i'), '{{ track.audio.url }}'])">#}
+        {#                                <span>#}
+        {#                                    {{ forloop.counter }}#}
+        {#                                </span>#}
+        {#                                <i class="fas fa-play"></i>#}
+        {#                            </div>#}
+        {#                            <div id="track-title" class="track-title">#}
+        {#                                {{ track.title }}#}
+        {#                                {% if track.explicit %}#}
+        {#                                    <span class="explicit-badge" aria-label="Explicit" role="img">#}
+        {#                            <svg width="9" height="9" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg" class="glyph"#}
+        {#                                 aria-hidden="true">#}
+        {#                            <path d="M1.59 8.991h5.82c1.043 0 1.582-.538 1.582-1.566v-5.85C8.992.547 8.453.008 7.41.008H1.59C.552.008.008.542.008 1.575v5.85c0 1.028.544 1.566 1.582 1.566zm1.812-2.273c-.332 0-.505-.211-.505-.553V2.753c0-.341.173-.553.505-.553h2.264c.245 0 .408.14.408.385 0 .235-.163.384-.408.384H3.854v1.106h1.71c.226 0 .38.125.38.355 0 .221-.154.346-.38.346h-1.71V5.95h1.812c.245 0 .408.14.408.385 0 .235-.163.384-.408.384H3.402z"></path></svg>#}
+        {#                        </span>#}
+        {#                                {% endif %}#}
+        {#                            </div>#}
+        {#                            <div></div>#}
+        {#                            <div id="track-duration" class="track-duration">#}
+        {#                                <time>#}
+        {#                                    {{ track.duration }}#}
+        {#                                </time>#}
+        {#                            </div>#}
+{#                                    <div id="track-url" style="display: none">{{ track.audio.url }}</div>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                {% endfor %}#}
+        {#            </div>#}
+        {#            <div id="metadata" class="metadata">#}
+        {#                <p class="release-date">{{ album.upload_date.day }} {% if album.upload_date.month == 1 %}#}
+        {#                    January{% elif album.upload_date.month == 2 %}February{% elif album.upload_date.month == 3 %}#}
+        {#                    March{% elif album.upload_date.month == 4 %}April{% elif album.upload_date.month == 5 %}#}
+        {#                    May{% elif album.upload_date.month == 6 %}June{% elif album.upload_date.month == 7 %}#}
+        {#                    July{% elif album.upload_date.month == 8 %}August{% elif album.upload_date.month == 9 %}#}
+        {#                    September{% elif album.upload_date.month == 10 %}October{% elif album.upload_date.month == 11 %}#}
+        {#                    November{% elif album.upload_date.month == 12 %}December{% endif %} {{ album.upload_date.year }}#}
+        {#                </p>#}
+        {#            </div>#}
+        {#        </div>#}
+    </div>
+    <script src="https://kit.fontawesome.com/48968d9793.js"></script>
+{% endblock %}

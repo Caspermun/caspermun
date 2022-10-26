@@ -25,10 +25,10 @@ class LinkInline(admin.TabularInline):
 class AlbumAdmin(admin.ModelAdmin):
     inlines = [
         TrackInline,
-        LinkInline,
+        LinkInline
     ]
 
-    fieldsets = ((None, {'fields': ('title', 'artist', 'cover_tag', 'cover', 'url', 'upload_date', 'views')}),)
+    fieldsets = ((None, {'fields': ('title', 'artist', 'cover_tag', 'cover', 'genre', 'explicit', 'url', 'html', 'upload_date', 'views')}),)
     readonly_fields = ('cover_tag',)
     list_display = ('artist', 'title', 'cover_tag')
     list_display_links = ('artist', 'title', 'cover_tag')

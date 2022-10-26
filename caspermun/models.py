@@ -1,5 +1,6 @@
 import datetime
 
+import mutagen
 from birthday import BirthdayField
 from django.db import models
 from django.utils.html import format_html
@@ -31,7 +32,7 @@ class Artist(models.Model):
     name = models.CharField('Name', max_length=64)
     surname = models.CharField('Surname', max_length=64)
     image = models.ImageField('Image', upload_to=f'artists/{nickname}', help_text='Photo', null=True, blank=True)
-    bio = models.CharField('Bio', help_text='Shows in about page', max_length=2048, default='')
+    bio = models.TextField('Bio', help_text='Shows in about page', default='')
     birthday = BirthdayField('Birthday')
 
     def __str__(self):
@@ -79,6 +80,14 @@ class Contacts(models.Model):
         return 'Contacts'
 
 
+GENRE_CHOICES = (
+    ('hh', 'Hip-Hop/Rap'),
+    ('trap', 'Trap'),
+    ('rb', 'R&B'),
+    ('pop', 'Pop'),
+)
+
+
 class Album(models.Model):
     class Meta:
         verbose_name = 'Album'
@@ -88,7 +97,10 @@ class Album(models.Model):
     title = models.CharField('Title', max_length=64)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE, verbose_name='Artist')
     cover = models.ImageField('Cover', upload_to=f'tracks/{title}', help_text='Songs cover')
+    genre = models.CharField('Genre', choices=GENRE_CHOICES, default='hh', max_length=64)
+    explicit = models.BooleanField('Explicit', default=False)
     url = models.CharField('Url', max_length=64, help_text='Url title')
+    html = models.URLField('Apple Music', help_text='Embed code', default='')
     upload_date = models.DateTimeField('Upload date', default=datetime.datetime.today())
     views = models.IntegerField(default=0, verbose_name='Views')
 
@@ -108,10 +120,12 @@ class Track(models.Model):
     title = models.CharField('Title', max_length=64)
     audio = models.FileField('Audio', upload_to=f'tracks/{Album.title}/{title}', help_text='Track', null=True,
                              blank=True, max_length=1000)
+    # duration = models.CharField("Track duration", blank=True, null=True, max_length=8)
     lyrics = models.TextField('Lyrics', null=True, blank=True, help_text='Song lyrics')
     album = models.ForeignKey(Album, on_delete=models.CASCADE, verbose_name='Album')
     artist = models.ManyToManyField(Artist, verbose_name='Artist', related_name='Artist')
     sound_producer = models.ForeignKey(Artist, on_delete=models.CASCADE, verbose_name='Sound producer')
+    explicit = models.BooleanField('Explicit', default=False)
 
     def audio_tag(self):
         return format_html(
@@ -119,6 +133,13 @@ class Track(models.Model):
 
     audio_tag.short_description = 'Audio play'
     audio_tag.allow_tags = True
+
+    @property
+    def duration(self):
+        audio_info = mutagen.File(self.audio).info
+        length = int(audio_info.length)
+        minutes = length // 60
+        return str(minutes) + ':' + str(length - minutes * 60)
 
     def __str__(self):
         artists = []

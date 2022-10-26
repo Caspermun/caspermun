@@ -27,7 +27,7 @@ environ.Env.read_env()
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ["https://caspermun.com", "https://www.caspermun.com"]
@@ -71,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'caspermun.context_processor.base',
             ],
         },
     },
